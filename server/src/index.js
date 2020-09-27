@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-const helmet = require('helmet');
+const helmet = require('helmet'); //this package hide the fact that you are using Express, so hackers don't know about Express, it's harder for them to hack, it prevents adding certain information to the header, like "EXPRESS"
 const cors = require('cors');
 const mongoose = require('mongoose');
 
