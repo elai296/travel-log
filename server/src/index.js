@@ -1,7 +1,9 @@
 const express = require('express');
-const morgan = require('morgan');
-const helmet = require('helmet'); //this package hide the fact that you are using Express, so hackers don't know about Express, it's harder for them to hack, it prevents adding certain information to the header, like "EXPRESS"
-const cors = require('cors');
+const morgan = require('morgan'); //morgan will show in the terminal what HTTP method, status code, port, etch, it makes it easier to debug, in the video he explains at 17.03 mins
+// https://www.youtube.com/watch?v=5pQsl9u_10M&t=587s
+const helmet = require('helmet'); //this package hide the fact that you are using Express, so hackers don't know about Express, it's harder for them to hack, it prevents adding certain information to the header, like "X-Powered-By: Express", helmet will remove this property in the header
+// https://helmetjs.github.io/
+const cors = require('cors'); //this set * for the all origin in the header
 const mongoose = require('mongoose');
 
 require('dotenv').config();
@@ -33,10 +35,17 @@ app.get('/', (req, res) => {
 
 app.use('/api/logs', logs);
 
-app.use(middlewares.notFound);
-app.use(middlewares.errorHandler);
+app.use(middlewares.notFound); //the other file
+app.use(middlewares.errorHandler); //the other file
 
 const port = process.env.PORT || 1337;
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
+
+
+/* how to organize code, advice from cj from coding garden
+- put middleware in one file
+- put error handling in another file
+- put route in another file
+*/
