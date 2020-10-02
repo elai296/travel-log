@@ -6,7 +6,7 @@ const helmet = require('helmet'); //this package hide the fact that you are usin
 const cors = require('cors'); //this set * for the all origin in the header
 const mongoose = require('mongoose');
 
-require('dotenv').config();
+require('dotenv').config(); //this bring in the .env file
 
 const middlewares = require('./middlewares');
 const logs = require('./api/logs');
